@@ -32,7 +32,7 @@ function codex {
         echo "Call 'codex .' or 'codex /path/to/project'";
     else
         proj_dir=$(cd "$1" && pwd);
-        make -C $codex_dir run HOST_PATH_TO_PROJECT="$proj_dir" CONTAINER_PATH_TO_MOUNT_PROJECT="$proj_dir";
+        make -s -C $codex_dir run HOST_PATH_TO_PROJECT="$proj_dir" CONTAINER_PATH_TO_MOUNT_PROJECT="$proj_dir";
     fi;
 }
 ```
