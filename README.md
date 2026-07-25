@@ -13,6 +13,28 @@ Installed directly from https://chatgpt.com/codex/install.sh
 - [Podman](https://podman.io/) or [Docker](https://www.docker.com/) (installed and configured)
 - GNU Make
 
+### macOS (Apple Silicon) setup
+
+The base image is amd64-only. Enable Rosetta **before** creating the podman machine — add to `~/.config/containers/containers.conf`:
+
+```
+[machine]
+rosetta = true
+```
+
+Then create the VM (rootless is the default and is what this setup expects):
+
+```bash
+podman machine init
+podman machine start
+```
+
+If podman was upgraded via brew after the machine was created, recreate it — a client/server version mismatch (check `podman version`) silently breaks TTY allocation and Claude Code exits with "Input must be provided either through stdin or as a prompt argument when using --print":
+
+```bash
+podman machine rm && podman machine init && podman machine start
+```
+
 ## Getting Started
 
 Note: all `make` commands below make use of Podman by default. Pass `Docker=docker` if you prefer to run in docker container.
