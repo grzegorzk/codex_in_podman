@@ -6,10 +6,54 @@ ARG ARCH_BASE_IMAGE
 FROM docker.io/${ARCH_BASE_IMAGE} AS x11_arch
 
 RUN pacman -Sy --disable-download-timeout --noconfirm \
+    awk \
     base-devel \
+    curl \
+    flake8 \
+    git \
+    gzip \
+    htop \
+    httpie \
+    jq \
+    lsof \
+    mypy \
+    neovim \
+    openssh \
+    procps-ng \
     python \
+    python-dotenv \
+    python-pip \
+    python-virtualenv \
+    python-beautifulsoup4 \
+    python-black \
+    python-click \
+    python-cryptography \
+    python-dotenv \
+    python-flake8 \
+    python-httpx \
+    python-numpy \
+    python-openpyxl \
+    python-pandas \
+    python-psutil \
+    python-pytest \
+    python-requests \
+    python-rich \
+    python-ruff \
+    python-watchdog \
+    python-yaml \
+    ripgrep \
+    ruff \
+    sed \
+    shellcheck \
+    sqlite \
+    strace \
     tar \
-    which
+    tree \
+    unzip \
+    wget \
+    which \
+    yq \
+    && pacman -Scc --noconfirm
 
 ARG GROUP_ID
 ARG USER_ID
